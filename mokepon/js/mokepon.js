@@ -1,8 +1,16 @@
 let ataqueJugador
 let ataqueEnemigo
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 // FUNCION PARA INICIAR EL JS UNA VEZ EL NAVEGADOR HAYA CARGADO Y  ESCUCHADOR DE EVENTOS DE LOS BOTONES EN HTML
 function iniciarJuego(){
+    let sectionSeleccionarAtaque = document.getElementById("selecionar-ataque")
+    sectionSeleccionarAtaque.style.display = "none"
+
+    let sectioReinicio = document.getElementById("reiniciar")
+    sectioReinicio.style.display = "none"
+
     let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click', selecionarMascotaJugador)
 
@@ -12,9 +20,18 @@ function iniciarJuego(){
     botonAgua.addEventListener ("click", ataqueAgua)
     let botonTierra = document.getElementById ("boton-tierra")
     botonTierra.addEventListener ("click", ataqueTierra)
+
+    let botonReiniciar = document.getElementById ("boton-reiniciar")
+    botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 // FUNCIONES DE SELECCION DE MASCOTA JUGADOR/ENEMIGO
 function selecionarMascotaJugador(){
+    let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota")
+    sectionSeleccionarMascota.style.display = "none"
+
+    let sectionSeleccionarAtaque = document.getElementById("selecionar-ataque")
+    sectionSeleccionarAtaque.style.display = "block"
+
     let inputHipodoge = document.getElementById('hipodoge')
     let inputCapipepo = document.getElementById('capipepo')
     let inputRatigueya = document.getElementById('ratigueya')
@@ -71,6 +88,7 @@ function ataqueAgua(){
     ataqueJugador = "Agua"
     ataqueAleatorioEnemigo()
 }
+
 function ataqueTierra(){
     ataqueJugador = "Tierra"
     ataqueAleatorioEnemigo()
@@ -84,14 +102,79 @@ function ataqueAleatorioEnemigo(){
     } else if (ataqueAleatorio == 2){
         ataqueEnemigo = "Agua"
     } else {
-        ataqueAleatorio = "Tierra"
+        ataqueEnemigo = "Tierra"
     }
+    combate()
+}
+
+function combate(){
+    let spanVidasJugador = document.getElementById("vidas-jugador")
+    let spanVidasEnemigo = document.getElementById("vidas-enemigo")
+
+    if(ataqueJugador==ataqueEnemigo){
+        crearMensaje("EMPATE")
+    } else if(ataqueJugador == "Fuego" && ataqueEnemigo == "Tierra"){
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
+        crearMensaje("GANASTE")
+    }else if(ataqueJugador== "Agua" && ataqueEnemigo== "Fuego"){
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
+        crearMensaje("GANASTE")
+    }else if(ataqueJugador== "Tierra" && ataqueEnemigo== "Agua"){
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
+        crearMensaje("GANASTE")
+    }else{
+        crearMensaje("PERDISTE")
+        vidasJugador--
+        spanVidasJugador.innerHTML = vidasJugador
+    }
+
+    revisarVidas()
+
+}
+
+function revisarVidas(){
+    if (vidasEnemigo== 0){
+        mensajeResultado("GANASTE 🎉")
+    }else if (vidasJugador==0){
+        mensajeResultado("PERDISTE 😒")
+    }
+}
+
+function mensajeResultado(vencedor){
+    let seccionMensajes = document.getElementById("mensajes")
+    
+        let parrafo = document.createElement('p')
+        parrafo.innerHTML = vencedor
+        seccionMensajes.appendChild(parrafo)
+
+        let botonFuego = document.getElementById ("boton-fuego")
+        botonFuego.disabled = true
+        let botonAgua = document.getElementById ("boton-agua")
+        botonAgua.disabled = true
+        let botonTierra = document.getElementById ("boton-tierra")
+        botonTierra.disabled = true
+
+        let sectioReinicio = document.getElementById("reiniciar")
+    sectioReinicio.style.display = "block"
+}
+
+function crearMensaje(resultadoCombate){
+let seccionMensajes = document.getElementById("mensajes")
+
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = 'Tu mascota ataco con ' + ataqueJugador + ', la mascota del enemigo ataco con ' + ataqueEnemigo + '-' + resultadoCombate
+    seccionMensajes.appendChild(parrafo)
+}
+
+function reiniciarJuego(){
+    location.reload()
 }
 
 function aleatorio (min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
-
-
 
 window.addEventListener('load', iniciarJuego)
