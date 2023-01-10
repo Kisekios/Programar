@@ -1,8 +1,8 @@
-.titulo {
-    color:rgb(230, 233, 28);
-    width: 400px;
-    height: 50px;
-    background-color: rgb(34, 189, 189);
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+body {
+    font-family: 'Lobster', cursive;
+    background-color: rgb(38, 19, 211);
 }
 
 #seleccionar-mascota{
@@ -12,16 +12,38 @@
     align-items: center;
 }
 
+.titulo {
+    color:rgb(230, 233, 28);
+    font-size: 40px;
+}
+
+.subtitulo{
+    color:rgb(230, 233, 28);    
+    font-size: 35px;
+}
+
+.tarjetas {
+    display: flex;
+    gap:10px
+}
+
 .tarjeta-mokepon{
-    width: 100px;
+    width: 135px;
     height: 100px;
-    background: aquamarine;
+    background: rgb(216, 37, 37);
     padding: 10px;
     box-sizing: border-box;
     margin: 10px;
-    border: 2px solid #d16f11;
+    border: 2px solid #118bd1;
+    border-radius: 20px;
+    display: flex;
+    color: rgb(76, 213, 213);
+}
+
+.tarjeta-mokepon img{
+    width: 55px;
 }
 
 input {
-    
+    display: none;
 }
