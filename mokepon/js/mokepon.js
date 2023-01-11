@@ -30,7 +30,7 @@ function selecionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = "none"
 
     let sectionSeleccionarAtaque = document.getElementById("selecionar-ataque")
-    sectionSeleccionarAtaque.style.display = "block"
+    sectionSeleccionarAtaque.style.display = "flex"
 
     let inputHipodoge = document.getElementById('hipodoge')
     let inputCapipepo = document.getElementById('capipepo')
@@ -144,29 +144,34 @@ function revisarVidas(){
 }
 
 function mensajeResultado(vencedor){
-    let seccionMensajes = document.getElementById("mensajes")
+    let seccionMensajes = document.getElementById("resultado")
     
-        let parrafo = document.createElement('p')
-        parrafo.innerHTML = vencedor
-        seccionMensajes.appendChild(parrafo)
+    seccionMensajes.innerHTML = vencedor
 
-        let botonFuego = document.getElementById ("boton-fuego")
-        botonFuego.disabled = true
-        let botonAgua = document.getElementById ("boton-agua")
-        botonAgua.disabled = true
-        let botonTierra = document.getElementById ("boton-tierra")
-        botonTierra.disabled = true
-
-        let sectioReinicio = document.getElementById("reiniciar")
+    let botonFuego = document.getElementById ("boton-fuego")
+    botonFuego.disabled = true     
+    let botonAgua = document.getElementById ("boton-agua")  
+    botonAgua.disabled = true  
+    let botonTierra = document.getElementById ("boton-tierra")
+    botonTierra.disabled = true
+    let sectioReinicio = document.getElementById("reiniciar")
     sectioReinicio.style.display = "block"
 }
 
 function crearMensaje(resultadoCombate){
-let seccionMensajes = document.getElementById("mensajes")
+    let seccionMensajes = document.getElementById("resultado")
+    let ataquesJugador = document.getElementById("ataques-jugador")
+    let ataquesEnemigo = document.getElementById("ataques-enemigo")
 
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML = 'Tu mascota ataco con ' + ataqueJugador + ', la mascota del enemigo ataco con ' + ataqueEnemigo + '-' + resultadoCombate
-    seccionMensajes.appendChild(parrafo)
+    let mensajeAtaqueJugador = document.createElement('p')
+    let mensajeAtaqueEnemigo = document.createElement('p')
+
+    seccionMensajes.innerHTML = resultadoCombate
+    mensajeAtaqueJugador.innerHTML = ataqueJugador
+    mensajeAtaqueEnemigo.innerHTML = ataqueEnemigo
+
+    ataquesJugador.appendChild(mensajeAtaqueJugador)
+    ataquesEnemigo.appendChild(mensajeAtaqueEnemigo)
 }
 
 function reiniciarJuego(){
