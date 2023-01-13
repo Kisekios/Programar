@@ -24,10 +24,75 @@ const seccionMensajes = document.getElementById("resultado")
 const ataquesJugador = document.getElementById("ataques-jugador")
 const ataquesEnemigo = document.getElementById("ataques-enemigo")
 
+let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
+
+class Mokepon {
+    constructor (nombre, foto, vida){
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+        this.ataques = []
+    }
+}
+//Objetos de la clase Mokepon
+let hipodoge = new Mokepon ("Hipodoge", './assets/KDA.jpg', 5)
+let capipepo = new Mokepon ("Capipepo", './assets/CHANGE.jpg',5)
+let ratigueya = new Mokepon ("Ratigueya", './assets/Bunny.jpg',5)
+let langosteya = new Mokepon ("Langosteya",'./assets/NEITH, MERCURY & ATHENA.jpg',5)
+let tucapalma = new Mokepon ("Tucapalma", './assets/NAMI.jpg',5)
+let pydos = new Mokepon ("Pydos", './assets/AMATERASU.jpg',5)
+
+hipodoge.ataques.push(
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '⛰️', id: 'boton-tierra'}
+)
+
+capipepo.ataques.push(
+    { nombre: '⛰️', id: 'boton-tierra'},
+    { nombre: '⛰️', id: 'boton-tierra'},
+    { nombre: '⛰️', id: 'boton-tierra'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '💧', id: 'boton-agua'}
+)
+
+ratigueya.ataques.push(
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '⛰️', id: 'boton-tierra'},
+    { nombre: '💧', id: 'boton-agua'}
+)
+
+langosteya.ataques.push(
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '⛰️', id: 'boton-tierra'},
+    { nombre: '⛰️', id: 'boton-tierra'},
+    { nombre: '🔥', id: 'boton-fuego'}
+)
+
+tucapalma.ataques.push(
+    { nombre: '⛰️', id: 'boton-tierra'},
+    { nombre: '⛰️', id: 'boton-tierra'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '⛰️', id: 'boton-tierra'}
+)
+
+pydos.ataques.push(
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '⛰️', id: 'boton-tierra'}
+)
 
 // FUNCION PARA INICIAR EL JS UNA VEZ EL NAVEGADOR HAYA CARGADO Y  ESCUCHADOR DE EVENTOS DE LOS BOTONES EN HTML
 function iniciarJuego(){
