@@ -23,10 +23,12 @@ const spanVidasEnemigo = document.getElementById("vidas-enemigo")
 const seccionMensajes = document.getElementById("resultado")
 const ataquesJugador = document.getElementById("ataques-jugador")
 const ataquesEnemigo = document.getElementById("ataques-enemigo")
+const contenedorTarjetas = document.getElementById("contenedor-tarjetas")
 
 let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
+let opcionMokepones
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -42,7 +44,7 @@ class Mokepon {
 let hipodoge = new Mokepon ("Hipodoge", './assets/KDA.jpg', 5)
 let capipepo = new Mokepon ("Capipepo", './assets/CHANGE.jpg',5)
 let ratigueya = new Mokepon ("Ratigueya", './assets/Bunny.jpg',5)
-let langosteya = new Mokepon ("Langosteya",'./assets/NEITH, MERCURY & ATHENA.jpg',5)
+let langosteya = new Mokepon ("Langosteya",'./assets/NEITH.jpg',5)
 let tucapalma = new Mokepon ("Tucapalma", './assets/NAMI.jpg',5)
 let pydos = new Mokepon ("Pydos", './assets/AMATERASU.jpg',5)
 
@@ -94,9 +96,23 @@ pydos.ataques.push(
     { nombre: '⛰️', id: 'boton-tierra'}
 )
 
+mokepones.push(hipodoge,capipepo,ratigueya,langosteya,tucapalma,pydos)
+
 // FUNCION PARA INICIAR EL JS UNA VEZ EL NAVEGADOR HAYA CARGADO Y  ESCUCHADOR DE EVENTOS DE LOS BOTONES EN HTML
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"
+
+    mokepones.forEach((mokepon)=> {
+        opcionMokepones = `
+        <input type="radio" name="mascota" id=${mokepon.nombre}/>
+        <label class="tarjeta-mokepon" for=${mokepon.nombre}>
+            <p>${mokepon.nombre}</p>
+            <img src=${mokepon.foto} alt=${mokepon.nombre}>
+        </label>
+        `
+        contenedorTarjetas.innerHTML += opcionMokepones
+    })
+
     sectionReinicio.style.display = "none"
 
     botonMascotaJugador.addEventListener('click', selecionarMascotaJugador)
