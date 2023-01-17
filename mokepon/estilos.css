@@ -64,9 +64,9 @@ input {
     display: none;
 }
 
-input:checked+label {
+input:checked + label {
     background-color: rgb(247, 182, 5);
-    color: var(--main-color-2);
+    color: blue;
     box-shadow: 1px1px10px rgb(13, 252, 5);
 }
 
