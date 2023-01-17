@@ -15,7 +15,7 @@ const contenedorAtaques = document.getElementById("contenedor-ataques")
 
 let mokepones = []
 let ataqueJugador = []
-let ataqueEnemigo
+let ataqueEnemigo = []
 let opcionMokepones
 let inputHipodoge 
 let inputCapipepo 
@@ -25,10 +25,13 @@ let inputTucapalma
 let inputPydos 
 let mascotaJugador
 let ataquesMokepon
+let ataquesMokeponEnemigo
 let botonFuego 
 let botonAgua
 let botonTierra
 let botones = []
+let indexAtaqueEnemigo
+let indexAtaqueJugador
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -85,7 +88,7 @@ tucapalma.ataques.push(
     { nombre: '⛰️', id: 'boton-tierra'},
     { nombre: '🔥', id: 'boton-fuego'},
     { nombre: '🔥', id: 'boton-fuego'},
-    { nombre: '⛰️', id: 'boton-tierra'}
+    { nombre: '💧', id: 'boton-agua'}
 )
 
 pydos.ataques.push(
@@ -187,17 +190,15 @@ function secuenciaAtaque(){
         boton.addEventListener('click', (e) =>{
             if(e.target.textContent === "🔥"){
                 ataqueJugador.push("FUEGO")
-                console.log(ataqueJugador)
                 boton.style.background = "#112f58"
             }else if (e.target.textContent === "💧"){
                 ataqueJugador.push("AGUA")
-                console.log(ataqueJugador)
                 boton.style.background = "#112f58"
             }else {
                 ataqueJugador.push("TIERRA")
-                console.log(ataqueJugador)
                 boton.style.background = "#112f58"
             }
+            ataqueAleatorioEnemigo()
         } )
     })
 }
@@ -205,44 +206,43 @@ function secuenciaAtaque(){
 function selecionarMascotaEnemigo() {
     let mascotaAleatorio = aleatorio(0,mokepones.length - 1)
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
+    ataquesMokeponEnemigo = mokepones[mascotaAleatorio].ataques
     secuenciaAtaque()
 }
 
 
 function ataqueAleatorioEnemigo(){
-    let ataqueAleatorio = aleatorio(1,3)
-
-    if (ataqueAleatorio == 1){
-        ataqueEnemigo = "Fuego"
-    } else if (ataqueAleatorio == 2){
-        ataqueEnemigo = "Agua"
+    let ataqueAleatorio = aleatorio(0,ataquesMokeponEnemigo.length - 1)
+    if (ataqueAleatorio == 0 || ataqueAleatorio == 1){
+        ataqueEnemigo.push("FUEGO")
+    } else if (ataqueAleatorio == 3 || ataqueAleatorio == 4){
+        ataqueEnemigo.push("AGUA")
     } else {
-        ataqueEnemigo = "Tierra"
+        ataqueEnemigo.push("TIERRA")
     }
-    combate()
+    iniciarPelea()
+}
+
+function iniciarPelea(){
+    if (ataqueJugador.length === 5){
+        combate()
+    }
+}
+
+function indexAmbosOponentes(jugador, enemigo){
+    indexAtaqueJugador = ataqueJugador[jugador]
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo]
 }
 
 function combate(){
-    if(ataqueJugador==ataqueEnemigo){
-        crearMensaje("EMPATE")
-    } else if(ataqueJugador == "Fuego" && ataqueEnemigo == "Tierra"){
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-        crearMensaje("GANASTE")
-    }else if(ataqueJugador== "Agua" && ataqueEnemigo== "Fuego"){
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-        crearMensaje("GANASTE")
-    }else if(ataqueJugador== "Tierra" && ataqueEnemigo== "Agua"){
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-        crearMensaje("GANASTE")
-    }else{
-        crearMensaje("PERDISTE")
-        vidasJugador--
-        spanVidasJugador.innerHTML = vidasJugador
-    }
 
+    for (let index = 0; index < ataqueJugador.length; index++) {
+        if(ataqueJugador[index] === ataqueEnemigo[index] ){
+            indexAmbosOponentes(index, index)
+            crearMensaje("EMPATE")
+        }
+        
+    }
     revisarVidas()
 
 }
@@ -269,8 +269,8 @@ function crearMensaje(resultadoCombate){
     let mensajeAtaqueEnemigo = document.createElement('p')
 
     seccionMensajes.innerHTML = resultadoCombate
-    mensajeAtaqueJugador.innerHTML = ataqueJugador
-    mensajeAtaqueEnemigo.innerHTML = ataqueEnemigo
+    mensajeAtaqueJugador.innerHTML = indexAtaqueJugador
+    mensajeAtaqueEnemigo.innerHTML = indexAtaqueEnemigo
 
     ataquesJugador.appendChild(mensajeAtaqueJugador)
     ataquesEnemigo.appendChild(mensajeAtaqueEnemigo)
