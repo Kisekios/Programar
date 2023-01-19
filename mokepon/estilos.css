@@ -82,7 +82,7 @@ input:checked + label {
     border: 2px solid #118bd1;
     border-radius: 20px;
     border-color: #b36512;
-    width: 70px;
+    width: 80px;
     height: 60px;
     color: white;
     font-family: 'Bakbak One', cursive;
@@ -127,11 +127,18 @@ input:checked + label {
     color: rgb(44, 8, 8);
 }
 
+#ver-mapa {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#mapa {
+    border: 2px solid white;
+}
+
 @media (max-width:360px){
     .tarjetas, .tarjetas-ataques {
     flex-direction: column;
     }
-
-
-
 }
