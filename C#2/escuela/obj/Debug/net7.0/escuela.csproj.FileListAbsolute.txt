@@ -1,0 +1,15 @@
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\bin\Debug\net7.0\escuela.exe
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\bin\Debug\net7.0\escuela.deps.json
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\bin\Debug\net7.0\escuela.runtimeconfig.json
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\bin\Debug\net7.0\escuela.dll
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\bin\Debug\net7.0\escuela.pdb
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\escuela.csproj.AssemblyReference.cache
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\escuela.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\escuela.AssemblyInfoInputs.cache
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\escuela.AssemblyInfo.cs
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\escuela.csproj.CoreCompileInputs.cache
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\escuela.dll
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\refint\escuela.dll
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\escuela.pdb
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\escuela.genruntimeconfig.cache
+C:\Users\DEKO\Documents\Estudio\Programacion\Programar\C#2\escuela\obj\Debug\net7.0\ref\escuela.dll
